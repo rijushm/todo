@@ -1,0 +1,6 @@
+.inputs{
+  width: 100%;
+  outline: none;
+  border: none;
+  transition: 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+}

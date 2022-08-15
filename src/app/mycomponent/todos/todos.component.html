@@ -1,0 +1,25 @@
+<section>
+  <div class="inner__wrapper pt-12 px-6 md:px-8">
+    <app-add-todos (todoAdd)="addTodo($event)"></app-add-todos>
+  </div>
+</section>
+
+<section>
+  <div class="inner__wrapper py-6 px-6 md:px-8">
+    <h2 class="text-2xl md:text-4xl font-bold mb-6">My Todos</h2>
+
+    <div *ngIf="this.todos.length==0; else noTodoElseBlock">
+      <p class="mb-6">No ToDos to display, Add one</p>
+      <img src="../assets/images/beach_day.svg" alt="Beach party" class="w-full md:w-1/4">
+    </div>
+
+    <ng-template #noTodoElseBlock>
+      <div class="todo_list_wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <article *ngFor="let todo of todos.reverse(); let i = index"
+          class="app-todo-item bg__alt rounded-md p-8 relative" [todo]="todo" [i]="i" (todoRemover)="removeTodo($event)"
+          (markDoneTodo)="markActiveDone($event)"></article>
+      </div>
+    </ng-template>
+
+  </div>
+</section>

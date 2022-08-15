@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{
+  --primary: rgb(64, 90, 195);
+  --secondary: rgb(107, 48, 191);
+  --success: rgb(34, 123, 65);
+  --danger: rgb(205, 60, 72);
+  --dark: rgb(24, 24, 24);
+  --alt: rgb(244, 244, 244);
+  --light: rgb(248, 248, 248);
+}
+*{
+  font-family: 'Poppins', sans-serif;
+}
+.inner__wrapper{
+  width: 100%;
+  max-width: 1360px;
+}
+main, section, header, footer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.text__primary{
+  color: var(--primary);
+}
+.text__secondary{
+  color: var(--secondary);
+}
+.text__success{
+  color: var(--success);
+}
+.text__danger{
+  color: var(--danger);
+}
+.bg__alt{
+  background-color: var(--alt);
+}
+
+.btn__main{
+  padding: 0.8rem 2rem;
+  background-color: var(--alt);
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: 0.3s;
+  border-radius: 4px;
+}
+.btn__primary{
+  background-color: var(--primary);
+  color: var(--light);
+}
+.btn__gradient{
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: var(--light);
+}
