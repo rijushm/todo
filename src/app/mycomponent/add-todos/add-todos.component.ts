@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Todo } from 'src/app/Todo';
+import { LocalService } from '../../local.service'
 
 @Component({
   selector: 'app-add-todos',
@@ -11,20 +12,28 @@ export class AddTodosComponent implements OnInit {
   title: Todo["title"]
   desc: Todo["desc"]
 
+  todosIf: any;
+
   @Output() todoAdd: EventEmitter<Todo> = new EventEmitter();
+  @Input() todos: any
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private _localTodos: LocalService) {
+    this.todos = this._localTodos.getData()
   }
+
+  ngOnInit(): void { }
+
   onSubmit(){
     const todo = {
-      sno: 1,
+      sno: this.todos.length + 1,
       title: this.title,
       desc: this.desc,
-      active: true
+      active: true,
+      status: "notstarted"
     }
-    this.todoAdd.emit(todo);
+    console.log('submitted')
+    this._localTodos.saveData(todo)
+    this.todoAdd.emit(todo)
   }
 
 }

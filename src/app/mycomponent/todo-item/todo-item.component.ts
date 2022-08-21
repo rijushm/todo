@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Todo } from '../../Todo'
+import { LocalService } from '../../local.service'
 
 @Component({
   selector: '.app-todo-item',
@@ -8,19 +9,26 @@ import { Todo } from '../../Todo'
 })
 export class TodoItemComponent implements OnInit {
 
-  @Input() todo!: Todo;
-  @Input() i!: number;
   @Output() todoRemover: EventEmitter<Todo> = new EventEmitter();
-  @Output() markDoneTodo: EventEmitter<Todo> = new EventEmitter();
+  @Input() todos: any
 
-  constructor() { }
+  localItem: string | null | undefined
+  todosIf: any;
 
-  ngOnInit(): void {
+  constructor(private _localTodos: LocalService) {
+    this.todos = this._localTodos.getData()
   }
 
-  onClick(todo: Todo){
-    console.log(`Delete event triggered on ${todo.sno} ToDo list`);
-    this.todoRemover.emit(todo);
+  ngOnInit(): void { }
+
+  removeData(todo: Todo){
+    this._localTodos.todos = this.todos;
+    this._localTodos.removeData(todo);
+    this.todoRemover.emit(todo)
+  }
+
+  statusChanged(todos: Todo){
+    this.todos = this._localTodos.getData()
   }
 
 }

@@ -1,0 +1,35 @@
+.status-input{
+  min-width: 8rem;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  left: 0;
+  top: -4px;
+}
+
+input[type="radio"]{
+  visibility: hidden;
+  position: absolute;
+}
+
+.check-status{
+  padding: 0.2rem 0.7rem;
+  border-radius: 3px;
+  background-color: var(--alt-2);
+  text-align: center;
+  font-weight: 500;
+}
+
+.notstarted-status{
+  background-color: var(--alt-2);
+  color: var(--dark);
+}
+.inprogress-status{
+  background-color: var(--secondary-alt);
+  color: var(--secondary);
+}
+.completed-status{
+  background-color: var(--success-alt);
+  color: var(--success);
+}

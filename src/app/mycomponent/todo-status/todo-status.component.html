@@ -1,0 +1,20 @@
+<div class="w-full flex gap-2 mb-6">
+  <button class="cursor-pointer text-xs" (click)="this.statusOption=!this.statusOption" data-title={{this.todo.title}}>
+    <span class="check-status notstarted-status" *ngIf="todo.status == 'notstarted'">Not Started Yet</span>
+    <span class="check-status inprogress-status" *ngIf="todo.status == 'inprogress'">In Progress</span>
+    <span class="check-status completed-status" *ngIf="todo.status == 'completed'">Completed</span>
+  </button>
+
+  <div class="relative">
+    <div *ngIf="this.statusOption" class="status-input cursor-pointer">
+      <label for="notstarted-status{{i}}" class="cursor-pointer text-xs mb-1 check-status notstarted-status" (click)="markNotStarted(todo)">Not Started Yet</label>
+      <input type="radio" name="status" id="notstarted-status{{i}}" value="notstarted">
+
+      <label for="notstarted-status{{i}}" class="cursor-pointer text-xs mb-1 check-status inprogress-status" (click)="markProgress(todo)">In Progress</label>
+      <input type="radio" name="status" id="notstarted-status{{i}}" value="inprogress">
+
+      <label for="notstarted-status{{i}}" class="cursor-pointer text-xs mb-1 check-status completed-status" (click)="markDone(todo)">Completed</label>
+      <input type="radio" name="status" id="notstarted-status{{i}}" value="completed">
+    </div>
+  </div>
+</div>

@@ -1,10 +1,26 @@
 <section>
-  <div class="inner__wrapper px-6 py-12">
-    <h2 class="text__secondary text-xl font-semibold mb-6">Made with Angular with love</h2>
-    <h1 class="text-5xl font-bold mb-12">About the ToDo App</h1>
-    <p class="mb-12">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae consectetur voluptates distinctio accusantium quos quidem perferendis voluptatum incidunt sed, expedita reiciendis debitis veniam beatae nihil voluptatibus obcaecati nesciunt totam dolore est quam rem commodi asperiores at! Labore, fugit. Possimus optio architecto voluptates quae maxime fuga reiciendis perferendis praesentium odio doloribus magnam, natus ab, quia, autem fugiat nobis nam quisquam corrupti dolorum non impedit repellat incidunt delectus! Voluptatum recusandae tenetur necessitatibus laborum non commodi dicta doloremque voluptas numquam id totam porro suscipit consequuntur impedit mollitia rerum possimus ratione maxime reiciendis et odio, iure cum amet. Esse, tempore doloribus. Amet, labore dicta.
-    </p>
-    <a routerLink="/" class="btn__main btn__primary">Get Started</a>
+  <div class="inner__wrapper px-6 py-12 grid lg:grid-cols-2">
+    <div class="col-span-1 h-full flex flex-col justify-center items-start">
+      <img src="../../../assets/images/developer.SVG" alt="" class="md:p-20 mb-12 md:mb-0">
+    </div>
+    <div class="col-span-1 h-full flex flex-col justify-center items-start">
+      <h2 class="text__secondary md:text-xl font-semibold mb-6">Made with Angular with love</h2>
+      <h1 class="text-3xl md:text-5xl font-bold mb-8 md:mb-12">About the ToDo App</h1>
+      <p class="mb-4">
+        Hey! Glad you are here. This is my first project while learning Angular and Angular CLI. We can create amazing one web applications with this programming language. So it's a basic ToDo list app made with Angular. We can add our ToDos with the form above handled by Angular formModule, ToDo will be shown on the page immedietly. After adding those will be saved at the client side, we can
+      </p>
+      <ul class="mb-4">
+        <li><i class="fa fa-check mr-2 text__primary"></i>Create tasks</li>
+        <li><i class="fa fa-check mr-2 text__primary"></i>Change status of Todo</li>
+        <li><i class="fa fa-check mr-2 text__primary"></i>Remove/Delete tasks whenever we want</li>
+      </ul>
+      <p class="mb-8 md:mb-12">
+        It will be done without loading the page  (love about this Angular features). I will keep learning and improve this app.<br/>
+        <em>Let me know your thoughts on it</em>
+      </p>
+      <a routerLink="/" class="btn__main btn__primary">Get Started</a>
+    </div>
   </div>
 </section>
+
+<div class="app-todo-item"></div>

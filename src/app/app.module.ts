@@ -10,6 +10,7 @@ import { AddTodosComponent } from './mycomponent/add-todos/add-todos.component';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './mypages/about/about.component';
 import { HomeComponent } from './mypages/home/home.component';
+import { TodoStatusComponent } from './mycomponent/todo-status/todo-status.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './mypages/home/home.component';
     TodoItemComponent,
     AddTodosComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+    TodoStatusComponent
   ],
   imports: [
     BrowserModule,

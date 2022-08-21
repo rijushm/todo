@@ -1,11 +1,18 @@
-<span class="todo_id">#{{i+1}}</span>
-<h3 class="todo_title text-lg md:text-xl font-bold mb-2 mt-2" [ngClass]="{'mark-done': !todo.active}">{{todo.title}}</h3>
-<p class="todo_desc mb-6" [ngClass]="{'mark-done': !todo.active}">{{todo.desc}}</p>
-<div class="mb-2 flex gap-2 text__success cursor-pointer">
-  <input type="checkbox" name="markdone" id="todomarkdone{{i}}" (click)="markDoneTodo.emit(todo)" [checked]="!todo.active">
-  <label for="todomarkdone{{i}}" class="cursor-pointer">Mark as done</label>
+<p class="mb-8">{{this.todos | json}}</p>
+
+<div class="todo_list_wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+  <article *ngFor="let todo of todos; let i = index" class="bg__alt rounded-md p-8 relative flex flex-col items-start">
+
+    <span class="todo_id">#{{i+1}}</span>
+    <h3 class="todo_title text-lg md:text-xl font-bold mb-2 mt-2" [ngClass]="{'mark-done': !todo.active}">{{todo.title}}
+    </h3>
+    <p class="todo_desc mb-6" [ngClass]="{'mark-done': !todo.active}">{{todo.desc}}</p>
+
+    <app-todo-status [todo]="todo" [i]="i" (statusChanged)="statusChanged($event)"></app-todo-status>
+
+    <button class="text-red-500 text__danger gap-2 flex items-center" (click)="removeData(todo)">
+      <i class="fa fa-trash"></i>
+      <span class="mt-1">Delete</span>
+    </button>
+  </article>
 </div>
-<button class="text-red-500 text__danger gap-2 flex items-center" (click)="onClick(todo)">
-  <i class="fa fa-trash"></i>
-  <span class="mt-1">Delete</span>
-</button>

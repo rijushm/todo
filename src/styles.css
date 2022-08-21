@@ -6,10 +6,13 @@
 :root{
   --primary: rgb(64, 90, 195);
   --secondary: rgb(107, 48, 191);
+  --secondary-alt: rgb(228, 215, 246);
   --success: rgb(34, 123, 65);
+  --success-alt: rgb(205, 236, 216);
   --danger: rgb(205, 60, 72);
   --dark: rgb(24, 24, 24);
   --alt: rgb(244, 244, 244);
+  --alt-2: rgb(207, 207, 207);
   --light: rgb(248, 248, 248);
 }
 *{

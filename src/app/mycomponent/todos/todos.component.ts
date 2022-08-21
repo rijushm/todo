@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../Todo'
+import { LocalService } from '../../local.service'
 
 @Component({
   selector: 'app-todos',
@@ -8,42 +9,20 @@ import { Todo } from '../../Todo'
 })
 export class TodosComponent implements OnInit {
 
-  localItem: string | null;
-  todos: Todo[];
+  todos: any;
 
-  constructor() {
-    this.localItem = localStorage.getItem("todos");
-
-    if(this.localItem == null){
-      this.todos = []
-    }else{
-      this.todos = JSON.parse(this.localItem)
-    }
-
+  constructor(private _localTodos: LocalService) {
+    this.todos = this._localTodos.getData()
   }
 
-  ngOnInit(): void {
-  }
-  removeTodo(todo: Todo){
-    console.log(todo);
-    const index = this.todos.indexOf(todo);
-    this.todos.splice(index, 1);
-    localStorage.setItem("todos", JSON.stringify(this.todos));
+  ngOnInit(): void { }
+
+  todoAdded(todo: Todo){
+    this.todos = this._localTodos.getData();
   }
 
-  addTodo(todo: Todo){
-    console.log(todo);
-    if(todo.title && todo.desc){
-      this.todos.push(todo);
-      localStorage.setItem("todos", JSON.stringify(this.todos));
-    }
-  }
-
-  markActiveDone(todo: Todo){
-    console.log('mark done');
-    const index = this.todos.indexOf(todo);
-    this.todos[index].active = !this.todos[index].active;
-    localStorage.setItem("todos", JSON.stringify(this.todos));
+  todoRemoved(todo: Todo){
+    this.todos = this._localTodos.getData();
   }
 
 }
