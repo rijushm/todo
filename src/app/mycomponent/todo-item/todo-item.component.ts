@@ -1,6 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Todo } from '../../Todo'
 import { LocalService } from '../../local.service'
+import { gsap } from "gsap"
+import ScrollTrigger from "gsap/ScrollTrigger";
+import * as CryptoJS from 'crypto-js'
 
 @Component({
   selector: '.app-todo-item',
@@ -10,25 +13,48 @@ import { LocalService } from '../../local.service'
 export class TodoItemComponent implements OnInit {
 
   @Output() todoRemover: EventEmitter<Todo> = new EventEmitter();
+  @Output() todoStatusChanged: EventEmitter<Todo> = new EventEmitter();
   @Input() todos: any
 
-  localItem: string | null | undefined
-  todosIf: any;
+  todoItems:any
 
-  constructor(private _localTodos: LocalService) {
-    this.todos = this._localTodos.getData()
+  constructor(private _localTodos: LocalService) { }
+
+  ngOnInit(): void {
+    gsap.registerPlugin(ScrollTrigger)
+    this.getAllTodo()
   }
 
-  ngOnInit(): void { }
-
-  removeData(todo: Todo){
-    this._localTodos.todos = this.todos;
-    this._localTodos.removeData(todo);
-    this.todoRemover.emit(todo)
+  taskAnimation(){
+    ScrollTrigger.batch('article', {
+      // onEnter: batch => gsap.from('article', {opacity: 0, translateY: 20, stagger: 0.2})
+    })
   }
 
-  statusChanged(todos: Todo){
-    this.todos = this._localTodos.getData()
+  getAllTodo(): void{
+    this._localTodos.getData().subscribe( data => {
+      this.todoItems = data
+      this.todos = this._localTodos.decTodos(this.todoItems)
+      this.taskAnimation()
+    },
+    error =>{
+      console.log(error)
+    })
+  }
+
+  removeData(todo: any){
+    this._localTodos.removeData(todo.id).subscribe(data => {
+      // console.log(data)
+      this.todoRemover.emit(todo)
+    }, error =>{
+      console.log(error)
+    });
+    this.getAllTodo()
+  }
+
+  statusChanged(data: any){
+    this.getAllTodo()
+    this.todoStatusChanged.emit(data)
   }
 
 }

@@ -1,0 +1,84 @@
+<section id="signup" class="bg__gradient full_section">
+  <div class="inner__wrapper py-16 px-6 md:px-8">
+    <div class="w-full flex items-center justify-center flex-col">
+      <div class="content_box lg:w-1/2 py-8 md:py-16 rounded-lg p-8 md:px-16 lg:px-20 bg-white mt-12 md:mt-0">
+        <h2 class="mb-2 md:mb-4">Welcome to your Task Manager</h2>
+        <h1 class="text-xl md:text-3xl font-semibold mb-8">Get started with create account</h1>
+        <div class="w-full rounded-md bg-green-100 text__success py-3 px-6 text-sm mb-6" *ngIf="this.isSuccess == true;">Your account is created successfuly, <a routerLink="/login" class="font-semibold text__success">Login to dashboard</a></div>
+        <p class="mb-6 text__danger" *ngIf="this.errMsg !== ''">{{this.errMsg}}</p>
+        <form name="form" (ngSubmit)="signup()" [formGroup]="signupForm" novalidate class="mb-6">
+          <!-- input start -->
+          <div class="cred_input">
+            <i class="fa fa-user"></i>
+            <input type="text" id="name" name="name" placeholder="Enter your name" class="border-none outline-none" formControlName="name">
+            <div class="text-xs text__danger float_err" *ngIf="signupForm.controls['name'].invalid && (signupForm.controls['name'].dirty || signupForm.controls['name'].touched)">
+              <div *ngIf="signupForm.controls['name'].errors?.['required']">Name is required</div>
+            </div>
+          </div>
+          <!-- input end -->
+          <!-- input start -->
+          <div class="cred_input">
+            <i class="fa fa-heart"></i>
+            <input type="text" id="username" name="username" placeholder="Create an username" class="border-none outline-none" formControlName="username">
+            <div class="text-xs text__danger float_err" *ngIf="signupForm.controls['username'].invalid && (signupForm.controls['username'].dirty || signupForm.controls['username'].touched)">
+              <div *ngIf="signupForm.controls['username'].errors?.['required']">Username is required</div>
+              <div *ngIf="signupForm.controls['username'].errors?.['minlength']">
+                Username must be at least 3 characters
+              </div>
+              <div *ngIf="signupForm.controls['username'].errors?.['maxlength']">
+                Username must be at most 20 characters
+              </div>
+            </div>
+          </div>
+          <!-- input end -->
+          <!-- input start -->
+          <div class="cred_input">
+            <i class="fa fa-envelope"></i>
+            <input type="email" id="email" name="email" placeholder="Your email" class="border-none outline-none" formControlName="email">
+            <div class="text-xs text__danger float_err" *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)">
+              <div *ngIf="signupForm.controls['email'].errors?.['required']">Email is required</div>
+              <div *ngIf="signupForm.controls['email'].errors?.['email']">
+                Must be a valid email
+              </div>
+            </div>
+          </div>
+          <!-- input end -->
+          <!-- input start -->
+          <div class="cred_input">
+            <i class="fa fa-lock"></i>
+            <input type="password" id="password" name="password" placeholder="Enter your password" class="border-none outline-none" formControlName="password">
+            <div class="text-xs text__danger float_err" *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)">
+              <div *ngIf="signupForm.controls['password'].errors?.['required']">Password is required</div>
+              <div *ngIf="signupForm.controls['password'].errors?.['minlength']">
+                Password should be minimum 6 characters
+              </div>
+              <div *ngIf="signupForm.controls['password'].errors?.['pattern']">
+                Password should have at least 1 capitalcase, 1 lowercase & 1 symbol
+              </div>
+            </div>
+          </div>
+          <!-- input end -->
+          <!-- input start -->
+          <div class="cred_input">
+            <i class="fa fa-lock"></i>
+            <input type="password" id="verify-password" name="verify-password" placeholder="Enter password again" class="border-none outline-none" formControlName="verpassword">
+            <div class="text-xs text__danger float_err" *ngIf="signupForm.controls['verpassword'].invalid && (signupForm.controls['verpassword'].dirty || signupForm.controls['verpassword'].touched) || this.conPassValid == true">
+              <div *ngIf="signupForm.controls['verpassword'].errors?.['required']">Confirm password is required</div>
+              <div *ngIf="signupForm.controls['verpassword'].errors?.['minlength']">
+                Password should be minimum 6 characters
+              </div>
+              <div *ngIf="this.conPassValid == true;">
+                Confirm password should be same
+              </div>
+            </div>
+          </div>
+          <!-- input end -->
+          <button class="btn__main btn__gradient relative">
+            <app-flex-button [active]="btnActive"></app-flex-button>
+          </button>
+        </form>
+        <p class="text-xs md:text-sm">Aleady have an account? <a routerLink="/login" class="text__gradient font-semibold">Login now</a></p>
+      </div>
+    </div>
+  </div>
+</section>

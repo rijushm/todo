@@ -1,0 +1,8 @@
+.not_loggedin_img{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40%;
+  opacity: 0.5;
+  user-select: none;
+}

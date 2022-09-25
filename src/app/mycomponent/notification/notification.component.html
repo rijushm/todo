@@ -1,0 +1,6 @@
+<div *ngIf="this.message.message;" class="update_message flex justify-between gap-16 items-start bg__success_alt text__success rounded-md px-6 py-2">
+  <p class="">{{this.message.message}}</p>
+  <button aria-label="close notification" (click)="closeNotice()">
+    <i class="fa fa-times"></i>
+  </button>
+</div>

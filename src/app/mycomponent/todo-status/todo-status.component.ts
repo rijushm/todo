@@ -14,33 +14,36 @@ export class TodoStatusComponent implements OnInit {
   @Output() statusChanged: EventEmitter<Todo> = new EventEmitter
 
   statusOption:boolean = false
-  todos: any
 
-  constructor(private _localTodos: LocalService) {
-    this.todos = _localTodos.getData()
-  }
+  constructor(private _localTodos: LocalService) { }
 
   ngOnInit(): void { }
 
   markDone(todo: Todo){
-    this._localTodos.markedDone(this.todo.sno);
+    this._localTodos.markedDone(todo).subscribe(data => {
+      this.statusChanged.emit(data)
+    }, error =>{
+      console.log(error)
+    });
     this.statusOption = false
-    console.log(this.todos)
-    this.statusChanged.emit(this.todos)
   }
 
   markNotStarted(todo: Todo){
-    this._localTodos.markedNotStarted(this.todo.sno);
+    this._localTodos.markedNotStarted(this.todo).subscribe(data => {
+      this.statusChanged.emit(data)
+    }, error =>{
+      console.log(error)
+    });
     this.statusOption = false
-    console.log(this.todos)
-    this.statusChanged.emit(this.todos)
   }
 
   markProgress(todo: Todo){
-    this._localTodos.markedProgress(this.todo.sno);
+    this._localTodos.markedProgress(this.todo).subscribe(data => {
+      this.statusChanged.emit(data)
+    }, error =>{
+      console.log(error)
+    });
     this.statusOption = false
-    console.log(this.todos)
-    this.statusChanged.emit(this.todos)
   }
 
 }

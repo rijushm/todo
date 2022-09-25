@@ -1,11 +1,11 @@
-<p class="mb-8">{{this.todos | json}}</p>
-
 <div class="todo_list_wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-  <article *ngFor="let todo of todos; let i = index" class="bg__alt rounded-md p-8 relative flex flex-col items-start">
+  <article *ngFor="let todo of todos; let i = index" class="bg__alt rounded-md p-8 relative flex flex-col items-start overflow-hidden">
 
     <span class="todo_id">#{{i+1}}</span>
-    <h3 class="todo_title text-lg md:text-xl font-bold mb-2 mt-2" [ngClass]="{'mark-done': !todo.active}">{{todo.title}}
-    </h3>
+    <a routerLink="/todos/{{todo.id}}">
+      <h3 class="todo_title text-lg md:text-xl font-bold mb-2 mt-2" [ngClass]="{'mark-done': !todo.active}">{{todo.title}}
+      </h3>
+    </a>
     <p class="todo_desc mb-6" [ngClass]="{'mark-done': !todo.active}">{{todo.desc}}</p>
 
     <app-todo-status [todo]="todo" [i]="i" (statusChanged)="statusChanged($event)"></app-todo-status>

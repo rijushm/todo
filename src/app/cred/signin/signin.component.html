@@ -1,0 +1,44 @@
+<section id="login" class="bg__gradient full_section">
+  <div class="inner__wrapper py-16 px-6 md:px-8">
+    <div class="w-full flex items-center justify-center flex-col">
+      <div class="content_box lg:w-1/2 py-8 md:py-16 rounded-lg p-8 md:px-16 lg:px-20 bg-white">
+        <h2 class="mb-2 md:mb-4">Welcome back to your</h2>
+        <h1 class="text-xl md:text-3xl font-semibold mb-8">Task Manager</h1>
+        <p class="mb-6 text__danger" *ngIf="this.errMsg !== ''">{{this.errMsg}}</p>
+        <form name="form" (ngSubmit)="login()" [formGroup]="loginForm" novalidate class="mb-6">
+          <!-- input start -->
+          <div class="cred_input">
+            <i class="fa fa-envelope"></i>
+            <input type="email" id="email" name="email" placeholder="Your email" class="border-none outline-none" formControlName="email">
+            <div class="text-xs text__danger float_err" *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
+              <div *ngIf="loginForm.controls['email'].errors?.['required']">Email is required</div>
+              <div *ngIf="loginForm.controls['email'].errors?.['email']">
+                Must be a valid email
+              </div>
+            </div>
+          </div>
+          <!-- input end -->
+          <!-- input start -->
+          <div class="cred_input">
+            <i class="fa fa-lock"></i>
+            <input type="password" id="password" name="password" placeholder="Enter your password" class="border-none outline-none" formControlName="password">
+            <div class="text-xs text__danger float_err" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+              <div *ngIf="loginForm.controls['password'].errors?.['required']">Password is required</div>
+              <div *ngIf="loginForm.controls['password'].errors?.['minlength']">
+                Password should be minimum 6 characters
+              </div>
+              <div *ngIf="loginForm.controls['password'].errors?.['pattern']">
+                Password should have at least 1 capitalcase, 1 lowercase & 1 symbol
+              </div>
+            </div>
+          </div>
+          <!-- input end -->
+          <button class="btn__main btn__gradient relative">
+            <app-flex-button [active]="btnActive"></app-flex-button>
+          </button>
+        </form>
+        <p class="text-xs md:text-sm">Didn't have an account? <a routerLink="/signup" class="text__gradient font-semibold">Create an account</a></p>
+      </div>
+    </div>
+  </div>
+</section>

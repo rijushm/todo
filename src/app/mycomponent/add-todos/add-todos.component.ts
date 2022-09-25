@@ -12,14 +12,10 @@ export class AddTodosComponent implements OnInit {
   title: Todo["title"]
   desc: Todo["desc"]
 
-  todosIf: any;
-
   @Output() todoAdd: EventEmitter<Todo> = new EventEmitter();
   @Input() todos: any
 
-  constructor(private _localTodos: LocalService) {
-    this.todos = this._localTodos.getData()
-  }
+  constructor(private _localTodos: LocalService) { }
 
   ngOnInit(): void { }
 
@@ -31,9 +27,14 @@ export class AddTodosComponent implements OnInit {
       active: true,
       status: "notstarted"
     }
-    console.log('submitted')
-    this._localTodos.saveData(todo)
-    this.todoAdd.emit(todo)
+    this._localTodos.saveData(todo).subscribe(data => {
+      //console.log(data)
+      this.todoAdd.emit(data)
+      this.title = ""
+      this.desc = ""
+    },error =>{
+      console.log(error.message)
+    })
   }
 
 }

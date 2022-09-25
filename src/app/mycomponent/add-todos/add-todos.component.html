@@ -1,7 +1,7 @@
-<h2 class="text-2xl md:text-4xl font-bold md:mb-6">Add Todos</h2>
+<h2 class="text-lg md:text-xl font-semibold mb-8 md:mb-12"><i class="fa fa-plus text-sm"></i> Add new item</h2>
 
-<div class="w-full grid xl:grid-cols-2 mb-4 md:gap-8">
-  <form class="w-full mb-8 md:mb-16" (ngSubmit)="onSubmit()">
+<div class="add_form_wrapper">
+  <form class="w-full" (ngSubmit)="onSubmit()">
     <div class="mb-4 w-full">
       <label for="title" class="block mb-1">Add Title</label>
       <input type="text" placeholder="Title" name="title" [(ngModel)]="title" id="title" class="block py-4 px-4 bg__alt rounded-sm inputs" required>
@@ -12,7 +12,4 @@
     </div>
     <button class="btn__main btn__gradient"><span class="mt-1">Add Now</span> <i class="fa fa-angle-right ml-2"></i></button>
   </form>
-  <div class="row-start-1 xl:row-start-auto">
-    <img src="../assets/images/relaxing_walk.svg" alt="Relaxing walk with dog" class="md:w-2/3">
-  </div>
 </div>

@@ -1,12 +1,13 @@
-<div class="inner__wrapper flex justify-between items-center py-6 px-8 text-white">
+<div class="inner__wrapper flex justify-between items-center py-4 md:py-6 px-6 md:px-8">
   <div>
-    <a routerLink="/" class="text-2xl font-bold tracking-wider">ToDo <span class="text-sm font-semibold opacity-25">1.00</span></a>
+    <a routerLink="/" class="text-xl md:text-2xl font-bold tracking-wider">
+      <img src="../assets/images/logo/logo.png" alt="Taskgig logo" class="w-20 md:w-32">
+    </a>
   </div>
   <nav class="hidden md:block">
     <ul class="flex items-center gap-12">
-      <li><a routerLink="/" class="nav__link">Home</a></li>
-      <li><a routerLink="/about" class="nav__link">About</a></li>
-      <li><a routerLink="/todos" class="nav__link">All ToDos</a></li>
+      <li><a routerLink="/about" class="nav__link font-semibold text-sm" routerLinkActive="active">Support</a></li>
+      <li><a routerLink="/todos" class="nav__link font-semibold text-sm" routerLinkActive="active">Get Started</a></li>
     </ul>
   </nav>
 </div>

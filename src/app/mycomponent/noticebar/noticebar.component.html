@@ -1,0 +1,9 @@
+<div class="w-full rounded-md bg-white px-12 py-6 relative overflow-hidden mb-12" *ngIf="!this.isLoggedIn">
+  <div class="relative z-10">
+    <h2 class="text-xl md:text-xl font-semibold mb-2">Your data is insecure</h2>
+    <p class="text-sm"><a routerLink="/login" class="text__gradient font-semibold">Create an account</a> or <a routerLink="/login" class="text__gradient font-semibold">Login</a> now to get full access.</p>
+  </div>
+  <div class="not_loggedin_img">
+    <img src="../assets/images/shape-bg.jpg" alt="people" class="happy_people w-full">
+  </div>
+</div>

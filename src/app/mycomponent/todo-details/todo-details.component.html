@@ -1,0 +1,40 @@
+<app-loader *ngIf="this.loader;"></app-loader>
+<section *ngIf="this.todo;" id="todo-{{todo.id}}">
+  <div id="notification" *ngIf="this.message"  [message]="message"></div>
+  <div class="inner__wrapper py-8 md:py-16 px-6 md:px-8">
+    <div class="flex justify-center items-center flex-col relative">
+      <div class="w-full md:w-3/4 lg:w-1/2 p-6 md:p-12 rounded-lg bg__alt">
+
+        <p class="text-xs mb-0">Title</p>
+        <div class="mb-6 md:mb-8">
+          <input name="title" id="title" class="w-full outline-none py-4 rounded-lg bg__alt text-xl md:text-2xl lg:text-3xl font-bold" [(ngModel)]="this.todo.title"/>
+        </div>
+
+        <p class="text-xs mb-2">Description</p>
+        <div class="mb-6 md:mb-8">
+          <textarea name="desc" id="desc" class="w-full outline-none p-4 rounded-lg" [(ngModel)]="this.todo.desc"></textarea>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-xs mb-3">Status</p>
+            <app-todo-status [todo]="todo" (statusChanged)="statusChanged($event)"></app-todo-status>
+          </div>
+          <button (click)="todoUpdate()" class="btn__main btn__primary">Update</button>
+        </div>
+
+        <button class="text-red-500 text__danger gap-2 flex items-center" (click)="removeData(todo)">
+          <i class="fa fa-trash"></i>
+          <span class="mt-1">Delete</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="not-exist" *ngIf="this.error;">
+  <div class="inner__wrapper py-8 md:py-16 px-6 md:px-8">
+    <p class="mb-16">Sorry this task does not exist anymore</p>
+    <img src="../assets/images/playing-with-pet.svg" alt="Playing in mean time" class="w-full md:w-1/2 mb-12">
+    <a routerLink="/" class="btn__main btn__gradient">Create one</a>
+  </div>
+</section>
